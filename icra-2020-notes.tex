@@ -73,6 +73,137 @@
     
     Workshops are three-lecture series that I will include all under the same section. There are also one-off lectures that will be in their own section.
 \end{abstract}
-\section{Introduction}
+\section{Pavel Etingof: Symmetric Tensor Categories}
+\subsection{Part I: Algebras and Representation Theory without Vector Spaces}
+The motivating idea here is that symmetric tensor categories are the correct generalization of group representations for more interesting objects of study. Throughout we let $G$ be a group, $k$ an algebraically-closed field, and we consider the category $\Rep_k(G)$ of (finite dimensional) representations of $G$ over $k$.
 
+Recall that if $X,Y\in\Rep(G)$, $\Hom(X,Y)$ is the set of ``intertwining operators'' (satisfying $G$ linearity). What kind of structures and properties does this category have?
+\begin{itemize}
+    \item It is $k$-linear and abelian (in particular we can take kernels, cokernels, and images of morphisms, direct sums, etc)
+    \item It is artinian (locally finite); that is, objects have finite length (composition series) and $\Hom(X,Y)$ are finite dimensional over $k$.
+    \item It is monoidal (has associator isomorphisms for every triple, etc).
+    \item It is rigid (we have a contravariant involutive endofunctor $X\to X^\ast$) such that $X^{\ast\ast}$ is isomorphic to $X$ and furthermore we have evaluation and coevaluation maps
+    \[\operatorname{ev}_X:X^\ast\otimes X\to\mathbbm{1}\qquad \operatorname{coev}_X:\mathbbm{1}\to X\otimes X^\ast\]
+    satisfying some properties.
+    \item The $\otimes$ of morphisms is bilinear.
+    \item $\End(\mathbbm{1})=k$
+\end{itemize}
+\begin{defn}
+A category $\calC$ with such structures and properties is called a symmetric tensor category (STC). For an example, $\Rep(G)$ is an STC.
+\end{defn}
+
+A natural question to ask is \textit{are all STC of this form?} The answer to this is no. We can take $G$ to be an algebraic group or more generally an affine group scheme. THen consider $\calC=\Rep G$. This means that we have a (commutative) Hopf algebra $H$ that is the ring of functions on $G=\Spec H$. Then representations of $G$ are exactly finite dimensional comodules over $G$. This generalizes the previous setting: if $G$ is an abstract group, one can define the (reduced) affine group scheme $\widehat G$ called the \emph{proalgebraic completion} of $G$. This is defined to be the group scheme such that
+\[\Rep \hat G\cong \Rep_k(G).\]
+
+Then $\calO(\hat G)$ are the matrix elements of finite dimensional reps of $G$, or equivalently the functions on $G$ of the form $\varphi(g)=(f, gv)$ for $v\in V$ and $f\in V^\ast$.
+
+\textbf{Question:} Did this show what we wanted to see?
+
+Is that it? Still no. The counterexample this time comes from supervector spaces. Here we require $\ch k\ne 2$ and we get a $\bbZ/2$-graded vector spaces $V=V_0\oplus V_1$ which is symmetric except for the Koszul sign rule:
+\[x\otimes y\cong (-1)^{|x||y|}y\otimes x.\]
+Then it is not of the above form.
+
+As an example, if $k=\bbC$, we can define the dimension of an object as the composition
+\[\mathbbm{1}\xrightarrow{coev_X}X\otimes X^\ast\xrightarrow{\mathrm{twist}}X^\ast\otimes X\xrightarrow{ev_X} k\]
+In the case of a super vector space, we can do the same thing to get the dimension to be $\dim X_0-\dim X_1$ which gives us the Euler characteristic (in particular it could be negative).
+
+But in $\Rep G$, the dimensions are nonnegative. We can generalize previous ideas further: affine supergroup schemes are $H=H_0\otimes H_1$ that are supercommutative Hopf superalgebras (commutative Hopf algebra objects in supervect). Here $G=\Spec H$ is an affine supergroup scheme and $\Rep G$ are the finite dimensions $H$-comodules. This is not quite the furthest generalization: we can further take $z\in G(k)$ such that $z^2=1$ and then $z$ action on $\calO(G)=H$ by parity:
+\[z|_{H_0}=1,z|_{H_1}=-1\]
+and $\Rep(G,z)$ is the representation category of $G$ on super vector spaces on which $z$ acts by parity.
+
+Surely we are done now, right? Not quite. STC can in general be very big. Let $X\in\calC$ and write $l_n(X)$ for the length of $X^{\otimes n}$. If $\calC=\Rep(G)$
+or $\Rep(G,z),$ then $l_n(X)$ grows at most exponentially with $n$, since 
+\[l_n(X)\le (\dim_k X)^n.\]
+However, it turns out that there are categories where this growth is more than exponential. These are called \emph{Deline categories} which are defined as interpolations $\Rep S_t$, for instance $\Rep \GL_t$ or $\Rep \operatorname{Sp}_t$ for some $t\in \bbC$. 
+
+\begin{defn}
+We say $\calC$ is of \emph{moderate growth} if $l_n(X)$ grows at most exponentially for all $X$.
+\end{defn}
+Refining our question: is any STC of moderate growth of the form $\Rep(G,z)$ for some $G$ and $z$? The answer:
+\begin{thm}[Deligne 2002]
+Every symmetric tensor category over $k$ of characteristic zero of moderate groth is of the form $\Rep(G,z).$
+\end{thm}
+\begin{rmk}
+The positive characteristic case is false.
+\end{rmk}
+
+In fact, given a STC, we can construct $G$ or $(G,z)$ using \textbf{Tannakian formalism}. Let $\calC=\Rep G$ and let $\calF:\Rep G\to \Vectk$ be the forgetful functor.
+\begin{thm}
+$\calF$ is the unique exact faithful functor preserving $\otimes$ (that is monoidal).
+\end{thm}
+\begin{thm}
+The group giving us our representation category is $G=\Aut_\otimes(\calF)$, the group of automorphisms of $F$ as a monoidal functor.
+\end{thm}
+This functor is called a \emph{fiber functor} and for $\calC=\Rep(G,z)$ we have a unique superfiber functor such that $G=\Aut_\otimes(\calF)$ and $z$ is the parity automorphism.
+
+We say that $\Rep G$ is \textbf{Tannakian} and $\Rep(G,z)$ is \textbf{supertannakian}. There was also a result of Deligne at the end that I missed but I bet we can coerce the speaker to repeat it next time. :)
+
+\section{Srikanth Iyengar: Duality for Gorenstein Algebras}
+\subsection{Part I: Gorenstein Algebras}
+The slogan here is that we are guided, but not led by commutative algebra.
+
+\subsubsection{Commutative Gorenstein Rings}
+Throughout this (sub) section we will let $R$ be a commutative Noetherian ring. Examples here comes from coordinate rings of algebraic varieties. If we say $(R,\frakm, k)$ is local, it means the usual thing. We say that $R$ is \emph{Gorenstein} if $\injdim_R R<\infty$.
+
+If $M\in \lmod R$, then $\injdim_R M<\infty$ if and only if $\Ext_R^i(-,M)=0$ for all $i>>0$ iff $\Ext_R^i(k,M)=0$ for all i large enough iff $\Ext_R^i(k,M)=0$ for some $i\ge \dim R+1$ where $\dim$ denotes Krull dimension. Thus our final characterization is that $\Ext_R^{d+1}(k,M)=0.$
+This condition is easy to check by using a projective resolution of $k$! This is a result of Ischebeck.
+
+In summary,
+\[\injdim_R M<\infty \Leftrightarrow \injdim_R(M)\le \dim R\]
+and in fact (although it is nontrivial) it is equal to $\dim R!$ This is a result of Roberts in the ``new intersection theorem.'' THus $R$ is Gorenstein if and only if $\injdim R=\dim R$. In fact (when $R$ is local?), we get 
+\[\Ext_R^i(k,R)=\left\{\begin{matrix}
+0 & i\ne\dim R,\\
+k & i=\dim R
+\end{matrix}\right.\]
+that is, $R\Hom(k,R)\simeq \Sigma k$ in $\D(R).$
+
+Now if $R$ is any commutative Noetherian ring, $R$ is Gorenstein if $R_\frakp$ is Gorenstein for all $\frakp\in\Spec R$ (suffices to check on maximals).
+In this case, $\injdim R=\dim R$ Thus $R$ is Artinian and Gorenstein iff $\injdim R=0$ iff $R$ is self-injective.
+
+It can happen that $\dim R=0$. According to Nagata we can construct a commutative noetherian ring $R$ such that $\gldim R_\frakp<\infty$ ($R$ is regular) and yet $\dim R=\infty.$ So Gorenstein rings are not automatically Iwanaga-Gorenstein.
+
+Some examples: 
+\begin{itemize}
+    \item Regular rings
+    \item Determinantal rings: let $X=(X_{ij})$ be an $n\times n$ matrix of variables and $k[X]$ the polynomial ring over the $x_{ij}.$ For $1\le t\le n$, consider $I_t(X)$, the ideal generated by the $t\times t$ minors of $X$. Then $R=k[X]/I_t(X)$ is Gorenstein (it is picking up the matrices of rank larger than $t$. An example is $k[x,y,u,v]/(xy-uv)$
+    \item Rings of invariants: if $k$ is a field, and $G\le \operatorname{SL}(k^n)$ is a finite subgroup then $G$ acts on $S\eqdef k[x_1,\dots,x_n]$ and $R=S^G$ is Gorenstein (due to Watanabe).
+\end{itemize}
+\subsubsection{Gorenstein Algebras}
+Let $A$ be an associative ring. Then $A$ is a \emph{Noether $R$ algebra} if $R$ is commutative Noetherian, $A$ is an $R$ module with $\eta:R\to A$ such that $\Im(\eta)\subseteq Z(A)$ and finally that $A$ is a finitely-generated $R$-module (which implies $A$ is Noetherian on both sides).
+
+$A$ is a \emph{Gorenstein $R$-algebra} if also $A$ is projective as an $R$-module and the functor $R\hookrightarrow \End_R(A)$ is faithful and furthermore that $A_\frakp$ Is Iwanaga-Gorenstein (IG) for all $\frakp\in\Spec R$ and $\injdim A_\frakp<\infty$ (on both sides. Note that $A$ is a Gorenstein $R$-algebra if and only if $A\op$ is as well.
+
+Some examples include commutative Gorenstein rings themselves and finite dimensional algebras over $k$ that is Gorenstein. The group algebra RG for $G$ a finite group (scheme) are Gorenstein $R$-algebras. Furthermore $\Lambda(R^n)$ is Gorenstein. We also have $M_n(R)$ are Gorenstein. Finally infinite-dimensional gentle algebras are finite dimensional and central over a polynomial ring in 1 variable ($k[x]\hookrightarrow A$). Then $A$ is ``Gorenstein'' except $A$ might not be projective over $k[x]$, although there are many interesting examples that are.
+
+One take: the definition of Gorenstein $R$-algebras ought to be relaxed to allow $\projdim_A R<\infty$ (rather than being projective). This is a suggestion that makes things easier, although we will be working with the usual definition in what follows. Buchweitz did consider this idea in his notes.
+
+When $R$ is commutative Noetherian and $M\in \lmod R$, the projective dimension over $R$ of $M$ is finite iff $\projdim_{R_\frakp}M_\frakp$ is finite for all $\frakp.$ This is \textbf{not true} in general for $\injdim.$
+
+\subsubsection{Representation Theory}
+Let $(R,\frakm, k)$ be local, $M\in\lmod R$. Then $M$ is \emph{Maximum Cohen-MacCaulay (MCM)}
+ if $\depth_R M=\dim R$ (or $M=0$). This is equivalent to $\Ext_R^i(k,M)=0$ for $i<\dim R$ iff $\Ext_R^i(M,R)=0$ for some $i$ (sorry I he scrolled up too fast).
+ 
+ Now for any $M\in \lmod R$, $\Ext_R^i(M,R)=0$ for all $i>\dim R + 1$ so the $i^{th}$ syzygy module $\Omega^i_R M$ is MCM for all $i\ge \dim R$. 
+ 
+ \textit{I missed a whole blurb here.}
+  
+ It is a result due to Goto that $M\in \lmod R$ implies that $\Ext_R^i(M,R)=0$ for all $i$ large enough (no bound on $i$ apriori). This means the functor
+ \[R\Hom_R(_,R):\Db(\lmod R)\op\xrightarrow{\sim}\Db(\lmod R)\]
+ is an equivalence, which is another form of local duality per Grothendieck.
+ 
+ \subsubsection{Noncommutative case}
+ If $A$ is a Gorenstein $R$-algebra, $M$ is MCM is $\Ext_A^i(M,A)=0$ for all $i\ge 1.$ Note that this doesn't depend on $R$. ALso note that if $R\hookrightarrow A$ then if $A$ is Gorenstein, this implies $R$ is (the converse is not true). Furthermore, if $M\in\lmod A$ and $M$ is MCM over $A$, it is also MCM over $R$ (again, the converse is not true).
+ 
+ The above examples points to a difference between the commutative and noncommutative cases: if $R\hookrightarrow S$ is an inclusion of commutative rings and if $S$ is finite dimensional over $R$, $M$ is MCM over $S$ iff it is over $R$.
+ 
+ \begin{thm}[Iyengar, Krause]
+ For any $M\in \lmod A$, $\Ext_A^i(M,A)=0$ for all $i>>0$. Thus $\Omega_A^iM$ are MCM for all $i>>0.$
+ \end{thm}
+ In fact,
+ \[R\Hom(_,A):\Db(\lmod A)\to \Db(\lmod{A\op})\]
+ is an equivalence.
+ 
+ A problem: how does one check if $A$ is a Gorenstein $R$-algebra? If we have $(R,\frakm, k)$, one can check $\Ext_R^{d+1}(k,R)=0$ which can be computed by writing down a free resolution of $k$. What about general $R$ that are commutative noetherian? 
+ 
+ It is known that $R$ is Gorenstein iff $R$ is Cohen-MacCaulay (can be computed) and it satisfies a condition on $\Ext$ which is not necessarily computable. There is a conjecture due to \textbf{FIND NAME} that would make it computable, however.
 \end{document}
