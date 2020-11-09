@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+
+\usepackage{setspace}
+\usepackage{amssymb, amsfonts, amsmath, mathrsfs, color, fancyhdr, tikz-cd, adjustbox, bbm, xcolor, wasysym}
+\usepackage[thmmarks]{ntheorem}
+\usepackage[ntheorem,framemethod=TikZ]{mdframed}
+\usepackage{diagbox}
+%Disabling for now to speed up compilation
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = [rgb]{0,0,0.5},
+	citecolor = [rgb]{0.6,0,0},
+	urlcolor = [rgb]{0,0,0.5}
+}
+
+% Suppress mdframed telling us about "bad breaks". I can already see them.
+\usepackage{silence}
+\WarningFilter{mdframed}{You got a bad break}
+\makeatletter
+\mdf@PackageWarning{You got a bad break\MessageBreak
+  because the last split box is empty\MessageBreak
+  You have to change the settings}
+\makeatother
+
+\usepackage[style=alphabetic, bibencoding=utf8]{biblatex}
+%Set the bibliography file
+\bibliography{sources}
+
+%Document-Specific includes
+\usepackage{ytableau}
+
+%Replacement for the old geometry package
+\usepackage{fullpage}
+
+%Input my definitions
+\input{mydefs.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%% Customize Below %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%header stuff
+\setlength{\headsep}{24pt}  % space between header and text
+\pagestyle{fancy}     % set pagestyle for document
+\lhead{Research Discussion Notes} % put text in header (left side)
+\rhead{Nico Courts} % put text in header (right side)
+\cfoot{\itshape p. \thepage}
+\setlength{\headheight}{15pt}
+%\allowdisplaybreaks
+
+% Document-Specific Macros
+\DeclareMathOperator{\Spc}{Spc}
+\DeclareMathOperator{\Pol}{Pol}
+\newcommand{\vi}{\mathbf{i}}
+\newcommand{\vj}{\mathbf{j}}
+\newcommand{\vk}{\mathbf{k}}
+\newcommand{\vl}{\mathbf{l}}
+\newcommand{\vm}{\mathbf{m}}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\add}{\mathbf{add}}
+
+%make the title page
+\title{ICRA 2020 Notes}
+\author{Typeset by: Nico Courts}
+\date{November 2020}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+    What follows are my notes from the lectures and workshops I attended during the 2020 (online) International Conference on the Representation of Algebras. None of what follows is my own work besides the typing and any errors in transcription are my own.
+    
+    Workshops are three-lecture series that I will include all under the same section. There are also one-off lectures that will be in their own section.
+\end{abstract}
+\section{Introduction}
+
+\end{document}
